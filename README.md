@@ -13,7 +13,7 @@
 </center>
 
 <p align="center">
-   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">HuggingFace</a>  
+   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🌐 <a href="https://allava.freedomai.cn/#/" target="_blank">Demo</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">HuggingFace</a>  
    <!-- <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English -->
 </p>
 
