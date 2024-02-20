@@ -339,7 +339,6 @@ if __name__ =="__main__":
     parser.add_argument('--max_images_per_round', default=4, type=int)
     parser.add_argument('--maxlen', default=3500, type=int)
     parser.add_argument('--device', default='cuda:0', type=str)
-    parser.add_argument('--stream',  action='store_true')
     args = parser.parse_args()
 
     bot = Chatbot(args)
