@@ -34,11 +34,12 @@
 
 * LAION
 
-We leverage the superb GPT-4V to generate captions and complex reasoning QA pairs.
+We leverage the superb GPT-4V to generate captions and complex reasoning QA pairs. Prompt is [here](prompts/prompt_for_laion.txt).
 
 * Vison-FLAN
 
-We leverage the superb GPT-4V to generate captions and detailed answer for the original instructions.
+We leverage the superb GPT-4V to generate captions and detailed answer for the original instructions.  Prompt is [here](
+prompts/prompt_for_vflan.txt).
 
 * Wizard
 
@@ -220,7 +221,7 @@ Others: Jianquan Li, [Xiang Wan](https://scholar.google.com/citations?user=e3_kW
 
 
 
-## Citation
+## 📝 Citation
 If you find our data useful, please consider citing our work! We are FreedomIntelligence from [Shenzhen Research Institute of Big Data](http://sribd.cn/en) and [The Chinese University of Hong Kong, Shenzhen](https://sds.cuhk.edu.cn/en)
 ```
 @misc{chen2024allava,
