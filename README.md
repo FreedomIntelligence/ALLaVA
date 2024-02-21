@@ -6,6 +6,7 @@
 </div> -->
 
 ⚡ALLaVA is a project that provides a large-scale GPT4V-synthesized  dataset for training LVLMs.⚡
+
 <center>
 
 ![Python 3.10](https://img.shields.io/badge/Python-3.10-lightblue) ![Pytorch 1.13.0](https://img.shields.io/badge/PyTorch-2.1.1-lightblue) ![transformers](https://img.shields.io/badge/transformers-4.37.0-lightblue) 
@@ -241,9 +242,9 @@ These two models share the same PT procedure.
 
 ### Hyperparameters
 
-| Global Batch Size| ZeRO Stage| Optimizer | Max LR| Min LR | Scheduler| Epochs | Max length | Weight decay |
-| ---: | ---: |--:| ---: | ---: | ---: | ---: | ---: | ---: |
-| 256 (PT) / 128 (FT) | 1| AdamW | 2e-5 | 2e-6 | CosineAnnealingWarmRestarts| 1 | 2048 | 0 |
+| Global Batch Size| ZeRO Stage| Optimizer | Max LR| Min LR | Scheduler | Max length | Weight decay |
+| ---: | ---: |--:| ---: | ---: | ---: | ---: | ---: |
+| 256 (PT) / 128 (FT) | 1| AdamW | 2e-5 | 2e-6 | CosineAnnealingWarmRestarts | 2048 | 0 |
 
 The LM backbone, projector are trainable, while the vision encoder is kept frozen. 
 **The trainabilities of each module are the same for both stages.**
