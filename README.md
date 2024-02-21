@@ -13,7 +13,7 @@
 </center>
 
 <p align="center">
-   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🌐 <a href="https://allava.freedomai.cn/#/" target="_blank">Demo</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">HuggingFace</a>  
+   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🌐 <a href="https://allava.freedomai.cn/#/" target="_blank">Demo</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">ALLaVA-4V Dataset</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B" target="_blank">ALLaVA-3B</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B-Longer" target="_blank">ALLaVA-3B-Longer</a>   
    <!-- <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English -->
 </p>
 
@@ -22,7 +22,7 @@
 
 
 
-## 📚 Data
+## 📚 ALLaVA-4V Data
 
 ### Generation Pipeline
 
@@ -48,6 +48,19 @@ We regenerate the answer of Wizard_evol_instruct with GPT-4-Turbo.
 ### Dataset Cards
 
 All datasets can be found [here](https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V).
+The structure is shown below:
+```bash
+ALLaVA-4V
+├── ALLaVA-Caption-4V
+│   ├── ALLaVA-Caption-LAION-4V
+│   └── ALLaVA-Caption-VFLAN-4V
+├── ALLaVA-Instruct-4V
+│   ├── ALLaVA-Instruct-LAION-4V
+│   └── ALLaVA-Instruct-VFLAN-4V
+├── Evol-Instruct-GPT4-Turbo-143K
+```
+
+Here we provide detailed information of each subset.
 
 | Name | #Samples | Image Source | Instruction Source | Answer Source |
 | --- | ---: | ---: | ---: | ---: | 
@@ -71,11 +84,17 @@ Evol-Instruct-GPT4-Turbo-143K |143,000 | / | [Wizard](https://huggingface.co/dat
   "conversations": [
     {
       "from": "human",
-      "value": "<image>\nHow does the inclusion of gemstones affect the overall aesthetic and possible value of the ring?"
+      "value": "<image>\nPlease depict the image in words."
     },
     {
       "from": "gpt",
-      "value": "The inclusion of gemstones along the edges of the leaf design enhances the ring's aesthetic by adding a touch of brilliance and luxury. The small, clear gemstones catch the light, creating a sparkling effect that contrasts with the silver's polished surface and the leaf's textured details. This sparkling accent likely increases the ring's visual appeal, making it stand out more as an accessory. In terms of value, the presence of gemstones, which could be diamonds, would likely raise the ring's monetary worth. Gemstones, especially diamonds, are prized for their beauty and durability, and their addition to jewelry pieces often signifies a higher quality and class of the item, thereby increasing its market value."
+      "value": "The image displays a silver ring with a design that resembles a stylized leaf. The leaf design is spli
+tinto two symmetrical halves, separated by a gap that runs along the ring's band. Each half of the leaf pattern is text
+ued with detailed, vein-like striations that give it a realistic look. The edges of the leaf design are embellished wit
+hsmall, clear gemstones that could possibly be diamonds, adding a sparkle to the ring. The band of the ring is wide, su
+porting the large leaf motif, and it tapers slightly as it moves away from the leaf design. The silver metal has a high
+ olish, reflecting light brightly and providing a contrast to the textured leaf surface. The craftsmanship suggests a m
+i of organic inspiration with a touch of elegance due to the gemstone accents."
     }
   ],
   "original_caption": "190952cz Pandora Tropical Palm Leaf Ring",
@@ -139,6 +158,23 @@ Evol-Instruct-GPT4-Turbo-143K |143,000 | / | [Wizard](https://huggingface.co/dat
 }
 ```
 
+* Evol-Instruct-GPT4-Turbo-143K
+```
+{
+  "idx": "heR0vZB",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "As an online platform teacher named Aimee, you possess impeccable credentials which include a Bachelor of Science degree in Industrial and Labor Relations from Cornell University, expertise in the English language, and intermediate proficiency in both Chinese and Spanish. Additionally, your professional experience as a STEAM teacher at UN Women in Singapore has honed your skills in teaching children from the ages of 6-11 and working with students from all levels of education. Your exceptional teaching abilities in spoken English and pronunciation paired with your personal strengths of being informed, patient, and engaging make you an ideal teacher for students seeking to improve their English language skills. Can you provide a short, concise, and unique English self-introduction in bullet point form that would attract students to enroll in your course?"
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here are some bullet points for your English self-introduction:\n\n- Hi there! My name is Aimee and I'm thrilled to be your online English teacher!\n- With a Bachelor's degree from Cornell University and experience teaching STEAM at UN Women in Singapore, I know how to help students learn effectively.\n- I'm passionate about language and have intermediate proficiency in both Chinese and Spanish, so I understand the challenges of learning a new language.\n- In my classes, I focus on improving spoken English and pronunciation, as well as building vocabulary and grammar skills.\n- But learning English doesn't have to be boring! I'm an engaging and patient teacher who loves to have fun and make learning enjoyable.\n- So, whether you're a beginner or an advanced student, I'm confident that I can help you improve your English skills and achieve your goals. Let's get started!"
+    }
+  ]
+}
+```
+
 
 ## 🏭 Inference
 
@@ -183,6 +219,14 @@ for line in data:
 
 
 ## 🏋️‍♂️ Training
+
+### Data
+<div align=center>
+<img src="assets/training_datasets_by_stage.jpg" width = "640" alt="training_datasets" align=center />
+</div>
+
+As shown in the table, ALLaVA-3B uses 1M and 1.5M data for PT. and FT., respectively. 
+ALLaVA-3B-Longer trains one more epoch (i.e. 3M in total) for the FT. stage.
 
 ### Code
 The training code is largely based on [LLaVA](https://github.com/haotian-liu/LLaVA). 
@@ -233,3 +277,7 @@ If you find our data useful, please consider citing our work! We are FreedomInte
       primaryClass={cs.CL}
 }
 ```
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=FreedomIntelligence/ALLaVA&type=Date)](https://star-history.com/#FreedomIntelligence/ALLaVA&Date)
