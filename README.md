@@ -77,6 +77,26 @@ Evol-Instruct-GPT4-Turbo-143K |143,000 | / | [Wizard](https://huggingface.co/dat
 
 ***In *ALLaVA-Caption-VFLAN-4V* and *ALLaVA-Instruct-VFLAN-4V*, we additionally include 30K samples which are distilled following the same manner for LAION (i.e. Distilling Captions and Complex Reasoning QA pairs). We mix them up with the other data whose instructions are from the original VFLAN.
 
+
+### Image Download
+
+#### LAION
+Specify the input and output paths in `./download/laion/download_laion.sh` and simply run
+```shell
+sh ./download/laion/laion.sh
+```
+to start downloading images from URLs in the annotation files. As a reference, downloading 512K images takes ~10 hours with 200 threads and a maximum bandwidth of 3MB/s. The outputs of running this script are:
+
+- successfully downloaded images (binary files)
+
+- captions in conversation format with local image paths (json)
+
+- instructions in conversation format with local image paths (json)
+
+
+<!-- #### VFLAN -->
+
+
 ### Sample Demonstration
 * ALLaVA-Caption-LAION-4V
 ```
