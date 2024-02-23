@@ -66,8 +66,8 @@ Here we provide detailed information of each subset.
 | Name | #Samples | Image Source | Instruction Source | Answer Source |
 | --- | ---: | ---: | ---: | ---: | 
 |ALLaVA-Caption-LAION-4V* | 512,843 | LAION (web) | [Handcrafted](prompts/instructions_for_captions.txt) | GPT-4V
-|ALLaVA-Caption-VFLAN-4V**| 512,843 | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) | [Handcrafted](prompts/instructions_for_captions.txt) | GPT-4V
-|ALLaVA-Instruct-LAION-4V* | 202,552 | LAION (web) | GPT-4V | GPT-4V
+|ALLaVA-Caption-VFLAN-4V**| 202,552 | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) | [Handcrafted](prompts/instructions_for_captions.txt) | GPT-4V
+|ALLaVA-Instruct-LAION-4V* | 512,843 | LAION (web) | GPT-4V | GPT-4V
 |ALLaVA-Instruct-VFLAN-4V**| 203,065 | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) *** | GPT-4V
 Evol-Instruct-GPT4-Turbo-143K |143,000 | / | [Wizard](https://huggingface.co/datasets/WizardLM/WizardLM_evol_instruct_V2_196k) | GPT-4-Turbo
 
