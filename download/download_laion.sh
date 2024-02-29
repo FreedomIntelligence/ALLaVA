@@ -15,8 +15,24 @@ wget -c -O ALLaVA-Instruct-LAION-4V.json https://huggingface.co/datasets/Freedom
 
 
 # 2. download and upzip images
-wget -c -O images.zip https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V/resolve/main/allava_laion/images.zip?download=true
+mkdir image_chunks
 
-unzip images.zip # wait patiently, it takes a while...
+## 2.1 download
+for ((i=0; i<10; i++))
+do
+    wget -c -O image_chunks/images_$i.zip https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V/resolve/main/allava_laion/image_chunks/images_$i.zip?download=true &
+done
+
+## 2.2 unzip 
+for ((i=0; i<10; i++))
+do
+    unzip -j image_chunks/images_$i.zip -d images/ & # wait patiently, it takes a while...
+done
 
 
+
+
+# for ((i=1; i<3; i++))
+# do
+#     unzip -j i$i.zip -d i/ & # wait patiently, it takes a while...
+# done
