@@ -18,8 +18,7 @@
    <!-- <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English -->
 </p>
 
-## ✨ Updates
-- [02/29/2024]: The huggingface repo and [download scripts](#data-preparation) are updated. 
+## ✨ Latest News
 - [02/21/2024]: We are thrilled to release 1) **1.4M** data for training LVLMs, 2) two version of our ALLaVA-3B models, 3) inference code and 4) tech report.
 
 
@@ -48,8 +47,9 @@ prompts/prompt_for_vflan.txt).
 We regenerate the answer of Wizard_evol_instruct with GPT-4-Turbo.
 
 ### Dataset Cards
+
 All datasets can be found [here](https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V).
-The structure of naming is shown below:
+The structure is shown below:
 ```bash
 ALLaVA-4V
 ├── ALLaVA-Caption-4V
@@ -61,28 +61,13 @@ ALLaVA-4V
 ├── Evol-Instruct-GPT4-Turbo-143K
 ```
 
-The folder structure of the huggingface dataset space:
-```bash
-ALLaVA-4V
-├── allava_laion/
-│   ├── ALLaVA-Caption-LAION-4V.json
-│   ├── ALLaVA-Instruct-LAION-4V.json
-|   └── images.zip 
-├── allava_vflan/
-│   ├── ALLaVA-Caption-VFLAN-4V.json
-│   └── ALLaVA-Instruct-VFLAN-4V.json
-├── allava_text/
-│   └── Evol-Instruct-GPT4-Turbo-143K.json
-```
-**We do NOT own right to any image contained within the "images.zip" file. We collate the images and upload this file in request of the community to facilitate the data preparation process.**
-
 Here we provide detailed information of each subset.
 
 | Name | #Samples | Image Source | Instruction Source | Answer Source |
 | --- | ---: | ---: | ---: | ---: | 
-|ALLaVA-Caption-LAION-4V* | 505,588 | LAION (web) | [Handcrafted](prompts/instructions_for_captions.txt) | GPT-4V
+|ALLaVA-Caption-LAION-4V* | 512,843 | LAION (web) | [Handcrafted](prompts/instructions_for_captions.txt) | GPT-4V
 |ALLaVA-Caption-VFLAN-4V**| 202,552 | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) | [Handcrafted](prompts/instructions_for_captions.txt) | GPT-4V
-|ALLaVA-Instruct-LAION-4V* | 505,588 | LAION (web) | GPT-4V | GPT-4V
+|ALLaVA-Instruct-LAION-4V* | 512,843 | LAION (web) | GPT-4V | GPT-4V
 |ALLaVA-Instruct-VFLAN-4V**| 203,065 | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) | [Vision FLAN](https://huggingface.co/datasets/Vision-Flan/vision-flan_191-task_1k/tree/main) *** | GPT-4V
 Evol-Instruct-GPT4-Turbo-143K |143,000 | / | [Wizard](https://huggingface.co/datasets/WizardLM/WizardLM_evol_instruct_V2_196k) | GPT-4-Turbo
 
@@ -93,15 +78,10 @@ Evol-Instruct-GPT4-Turbo-143K |143,000 | / | [Wizard](https://huggingface.co/dat
 ***In *ALLaVA-Caption-VFLAN-4V* and *ALLaVA-Instruct-VFLAN-4V*, we additionally include 30K samples which are distilled following the same manner for LAION (i.e. Distilling Captions and Complex Reasoning QA pairs). We mix them up with the other data whose instructions are from the original VFLAN.
 
 
-### Data Preparation
+### Image Download
 
 #### LAION
-
-Specify the `laion_root` in `./download/download_laion.sh` and run 
-```shell
-sh ./download/download_laion.sh
-```
-<!-- Specify the input and output paths in `./download/laion/download_laion.sh` and simply run
+Specify the input and output paths in `./download/laion/download_laion.sh` and simply run
 ```shell
 sh ./download/laion/laion.sh
 ```
@@ -111,30 +91,17 @@ to start downloading images from URLs in the annotation files. As a reference, d
 
 - captions in conversation format with local image paths (json)
 
-- instructions in conversation format with local image paths (json) -->
+- instructions in conversation format with local image paths (json)
 
 
-#### VFLAN
-Specify the `vflan_root` in `./download/download_vflan.sh` and run 
-```shell
-sh ./download/download_vflan.sh
-```
-
-
-#### Evol-Instruct-GPT4-Turbo-143K
-Specify the `text_root` in `./download/download_text.sh` and run 
-```shell
-sh ./download/download_text.sh
-```
+<!-- #### VFLAN -->
 
 
 ### Sample Demonstration
-<details><summary>ALLaVA-Caption-LAION-4V</summary>
-
+* ALLaVA-Caption-LAION-4V
 ```
 {
-  "id": "allava_laion_cap_100277305",
-  "image": "allava_laion/images/100277305.jpeg",
+  "id": "allava_laion_cap_1",
   "conversations": [
     {
       "from": "human",
@@ -142,19 +109,21 @@ sh ./download/download_text.sh
     },
     {
       "from": "gpt",
-      "value": "The image displays a silver ring with a design that resembles a stylized leaf. The leaf design is split into two symmetrical halves, separated by a gap that runs along the ring's band. Each half of the leaf pattern is textured with detailed, vein-like striations that give it a realistic look. The edges of the leaf design are embellished with small, clear gemstones that could possibly be diamonds, adding a sparkle to the ring. The band of the ring is wide, supporting the large leaf motif, and it tapers slightly as it moves away from the leaf design. The silver metal has a high polish, reflecting light brightly and providing a contrast to the textured leaf surface. The craftsmanship suggests a mix of organic inspiration with a touch of elegance due to the gems
-tone accents."
+      "value": "The image displays a silver ring with a design that resembles a stylized leaf. The leaf design is spli
+tinto two symmetrical halves, separated by a gap that runs along the ring's band. Each half of the leaf pattern is text
+ued with detailed, vein-like striations that give it a realistic look. The edges of the leaf design are embellished wit
+hsmall, clear gemstones that could possibly be diamonds, adding a sparkle to the ring. The band of the ring is wide, su
+porting the large leaf motif, and it tapers slightly as it moves away from the leaf design. The silver metal has a high
+ olish, reflecting light brightly and providing a contrast to the textured leaf surface. The craftsmanship suggests a m
+i of organic inspiration with a touch of elegance due to the gemstone accents."
     }
   ],
   "original_caption": "190952cz Pandora Tropical Palm Leaf Ring",
   "url": "https://theartofpandora.com/wp-content/uploads/2016/10/190952CZ-1-600x600.jpg"
 }
   ```
-</details>
 
-
-<details><summary>ALLaVA-Caption-VFLAN-4V</summary>
-
+* ALLaVA-Caption-VFLAN-4V
 ```
 {
   "id": "allava_vflan_cap_100000",
@@ -171,14 +140,12 @@ tone accents."
   ]
 }
 ```
-</details>
 
-<details><summary>ALLaVA-Instruct-LAION-4V</summary>
+* ALLaVA-Instruct-LAION-4V
 
 ```
 {
-  "id": "allava_laion_inst_100277305",
-  "image": "allava_laion/images/100277305.jpeg",
+  "id": "allava_laion_inst_1",
   "conversations": [
     {
       "from": "human",
@@ -193,11 +160,8 @@ tone accents."
   "url": "https://theartofpandora.com/wp-content/uploads/2016/10/190952CZ-1-600x600.jpg"
 }
 ```
-</details>
 
-
-<details><summary>ALLaVA-Instruct-VFLAN-4V</summary>
-
+* ALLaVA-Instruct-VFLAN-4V
 ```
 {
   "id": "allava_vflan_inst_9",
@@ -214,10 +178,8 @@ tone accents."
   ]
 }
 ```
-</details>
 
-<details><summary>Evol-Instruct-GPT4-Turbo-143K</summary>
-
+* Evol-Instruct-GPT4-Turbo-143K
 ```
 {
   "idx": "heR0vZB",
@@ -233,8 +195,6 @@ tone accents."
   ]
 }
 ```
-</details>
-
 
 
 ## 🏭 Inference
@@ -259,7 +219,7 @@ python allava/serve/cli.py --model_dir /path/to/allava/dir
 
 
 ### Batch Inference
-Not supported yet. For now, please use the `bot.chat()` API in `allava/serve/cli.py`  to perform generation. Don't forget to call `bot.clear_history()` after generation for each item in a dataset. An example code snippet is shown below:
+Will be implemented soon! For now, please use the `bot.chat()` API in `allava/serve/cli.py`  to perform generation. Don't forget to call `bot.clear_history()` after generation for each item in a dataset. An example code snippet is shown below:
 
 ```python
 bot = Chatbot(config)
