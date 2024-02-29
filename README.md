@@ -19,7 +19,8 @@
 </p>
 
 ## ✨ Updates
-- [02/29/2024]: The huggingface repo and [download scripts](#data-preparation) are updated. 
+- [03/01/2024]: The huggingface repo of ALLaVA-3B and ALLaVA-3B-Longer are updated, which now supports the `from_pretrained` method to load models.
+- [02/29/2024]: The huggingface repo of ALLaVA-4V dataset and [download scripts](#data-preparation) are updated. 
 - [02/21/2024]: We are thrilled to release 1) **1.4M** data for training LVLMs, 2) two version of our ALLaVA-3B models, 3) inference code and 4) tech report.
 
 
