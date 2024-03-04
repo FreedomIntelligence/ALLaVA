@@ -1,8 +1,6 @@
-
-
 vflan_root="allava_vflan"
 
-
+mkdir $vflan_root
 cd $vflan_root
 
 # 1. download annotation files 
