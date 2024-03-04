@@ -354,13 +354,11 @@ Others: Jianquan Li, [Xiang Wan](https://scholar.google.com/citations?user=e3_kW
 ## 📝 Citation
 If you find our data useful, please consider citing our work! We are FreedomIntelligence from [Shenzhen Research Institute of Big Data](http://sribd.cn/en) and [The Chinese University of Hong Kong, Shenzhen](https://sds.cuhk.edu.cn/en)
 ```
-@misc{chen2024allava,
-      title={ALLaVA: Harnessing GPT4V-synthesized Data for A Lite Vision-Language Model}, 
-      author={Guiming Hardy Chen and Shunian Chen and Ruifei Zhang and Junying Chen and Xiangbo Wu and Zhiyi Zhang and Zhihong Chen and Jianquan Li and Xiang Wan and Benyou Wang},
-      year={2024},
-      eprint={2402.11684},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{chen2024allava,
+  title={ALLaVA: Harnessing GPT4V-synthesized Data for A Lite Vision-Language Model},
+  author={Chen, Guiming Hardy and Chen, Shunian and Zhang, Ruifei and Chen, Junying and Wu, Xiangbo and Zhang, Zhiyi and Chen, Zhihong and Li, Jianquan and Wan, Xiang and Wang, Benyou},
+  journal={arXiv preprint arXiv:2402.11684},
+  year={2024}
 }
 ```
 
