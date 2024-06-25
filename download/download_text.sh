@@ -1,5 +1,5 @@
 
-text_root="allava_laion"
+text_root="allava_text"
 
 mkdir $text_root
 cd $text_root

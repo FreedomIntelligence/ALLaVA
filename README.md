@@ -5,21 +5,40 @@
 <img src="assets/llavas.png" width = "640" alt="llavas" align=center />
 </div> -->
 
-⚡ALLaVA is a project that provides a large-scale GPT4V-synthesized  dataset for training LVLMs.⚡
-
-<center>
-
-![Python 3.10](https://img.shields.io/badge/Python-3.10-lightblue) ![Pytorch 1.13.0](https://img.shields.io/badge/PyTorch-2.1.1-lightblue) ![transformers](https://img.shields.io/badge/transformers-4.37.0-lightblue) 
-<!-- ![accelerate](https://img.shields.io/badge/accelerate-0.22-lightblue) -->
-</center>
-
 <p align="center">
-   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🌐 <a href="https://allava.freedomai.cn/#/" target="_blank">Demo</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">ALLaVA-4V Dataset</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B" target="_blank">ALLaVA-3B</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B-Longer" target="_blank">ALLaVA-3B-Longer</a>   
-   <!-- <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English -->
+⚡ALLaVA is a project that provides a large-scale GPT4V-synthesized  dataset for training LVLMs.⚡
 </p>
 
+<!-- <p align="center">
+
+![Python 3.10](https://img.shields.io/badge/Python-3.10-lightblue) ![Pytorch 1.13.0](https://img.shields.io/badge/PyTorch-2.1.1-lightblue) ![transformers](https://img.shields.io/badge/transformers-4.37.0-lightblue) 
+</p> -->
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Python-3.10-lightblue" alt="Python Version"/>
+    <img src="https://img.shields.io/badge/PyTorch-2.1.1-lightblue" alt="PyTorch Version"/>
+    <img src="https://img.shields.io/badge/transformers-4.37.0-lightblue" alt="Transformers Version"/>
+</p>
+
+<p align="center">
+   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🌐 <a href="https://allava.freedomai.cn/#/" target="_blank">Demo</a> 
+</p>
+<p align="center">
+   🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">ALLaVA-4V Dataset</a> 
+</p>
+   
+<p align="center">
+   🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B-Longer" target="_blank">ALLaVA-3B-Longer</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B" target="_blank">ALLaVA-3B</a>
+</p>
+
+<!-- <p align="center">
+   📃 <a href="https://arxiv.org/abs/2402.11684" target="_blank">Paper</a>  • 🌐 <a href="https://allava.freedomai.cn/#/" target="_blank">Demo</a> • 🤗 <a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V" target="_blank">ALLaVA-4V Dataset</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B-Longer" target="_blank">ALLaVA-3B-Longer</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B" target="_blank">ALLaVA-3B</a>
+    <br>  <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/FreedomIntelligence/CMB/blob/main/README.md"> English
+</p> -->
+
 ## ✨ Updates
-- [02/29/2024]: The huggingface repo and [download scripts](#data-preparation) are updated. 
+- [03/01/2024]: The huggingface repo of **ALLaVA-3B-Longer (recommended)** and ALLaVA-3B are updated, which now supports the `from_pretrained` method to load models.
+- [02/29/2024]: The huggingface repo of ALLaVA-4V dataset and [download scripts](#data-preparation) are updated. 
 - [02/21/2024]: We are thrilled to release 1) **1.4M** data for training LVLMs, 2) two version of our ALLaVA-3B models, 3) inference code and 4) tech report.
 
 
@@ -239,27 +258,34 @@ tone accents."
 
 ## 🏭 Inference
 
-### Setup
+### Load from 🤗 (Recommended) 
+See the [example script](allava/serve/huggingface_inference.py).
 
-* Clone the directory and install basic requirements
+### CLI
+
 ```shell
 git clone https://github.com/FreedomIntelligence/ALLaVA.git
 cd ALLaVA
 pip install -r requirements.txt
+
+python allava/serve/cli.py --model_dir /path/to/allava/model
+```
+
+<!-- ### Setup
+
+* Clone the directory and install basic requirements
+```shell
 ```
 
 * [Install Flash Attention (with a cuda device)](https://github.com/Dao-AILab/flash-attention?tab=readme-ov-file#installation-and-features)
 
 
 
-### CLI
-```
-python allava/serve/cli.py --model_dir /path/to/allava/dir
-```
+### CLI -->
 
 
-### Batch Inference
-Not supported yet. For now, please use the `bot.chat()` API in `allava/serve/cli.py`  to perform generation. Don't forget to call `bot.clear_history()` after generation for each item in a dataset. An example code snippet is shown below:
+<!-- ### Batch Inference -->
+You can use the `bot.chat()` API in `allava/serve/cli.py`  to perform generation. Don't forget to call `bot.clear_history()` after generation for each item in a dataset. An example code snippet is shown below:
 
 ```python
 bot = Chatbot(config)
@@ -274,7 +300,6 @@ for line in data:
     responses.append(response)
 
     bot.clear_history() # start fresh for a new item
-
 ```
 
 
@@ -329,13 +354,11 @@ Others: Jianquan Li, [Xiang Wan](https://scholar.google.com/citations?user=e3_kW
 ## 📝 Citation
 If you find our data useful, please consider citing our work! We are FreedomIntelligence from [Shenzhen Research Institute of Big Data](http://sribd.cn/en) and [The Chinese University of Hong Kong, Shenzhen](https://sds.cuhk.edu.cn/en)
 ```
-@misc{chen2024allava,
-      title={ALLaVA: Harnessing GPT4V-synthesized Data for A Lite Vision-Language Model}, 
-      author={Guiming Hardy Chen and Shunian Chen and Ruifei Zhang and Junying Chen and Xiangbo Wu and Zhiyi Zhang and Zhihong Chen and Jianquan Li and Xiang Wan and Benyou Wang},
-      year={2024},
-      eprint={2402.11684},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{chen2024allava,
+  title={ALLaVA: Harnessing GPT4V-synthesized Data for A Lite Vision-Language Model},
+  author={Chen, Guiming Hardy and Chen, Shunian and Zhang, Ruifei and Chen, Junying and Wu, Xiangbo and Zhang, Zhiyi and Chen, Zhihong and Li, Jianquan and Wan, Xiang and Wang, Benyou},
+  journal={arXiv preprint arXiv:2402.11684},
+  year={2024}
 }
 ```
 
