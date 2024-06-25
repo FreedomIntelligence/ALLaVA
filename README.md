@@ -343,22 +343,21 @@ for line in data:
 ## 🏋️‍♂️ Training
 
 ### Data
-<!-- <div align=center>
+<div align=center>
 <img src="assets/training_datasets_by_stage.jpg" width = "640" alt="training_datasets" align=center />
-</div> -->
+</div>
 
-As shown in the table, ALLaVA-3B uses 1M and 1.5M data for PT. and FT., respectively. 
-ALLaVA-3B-Longer trains one more epoch (i.e. 3M in total) for the FT. stage.
+ALLaVA uses 1.0M and 1.5M data for PT. and FT., respectively. 
 
 ### Code
 The training code is largely based on [LLaVA](https://github.com/haotian-liu/LLaVA). 
 We wholeheartedly express our gratitude for their invaluable contributions to open-sourcing LVLMs.
 
-### Cost
+<!-- ### Cost
 We train our models on 8*A800 GPUs.
 [ALLaVA-3B](https://huggingface.co/FreedomIntelligence/ALLaVA-3B) takes 8.3h for PT and 10.6h for FT.
 [ALLaVA-3B-Longer](https://huggingface.co/FreedomIntelligence/ALLaVA-3B-Longer) takes 8.3h for PT and 21.3h for FT.
-These two models share the same PT procedure.
+These two models share the same PT procedure. -->
 
 
 ### Hyperparameters
