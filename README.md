@@ -28,7 +28,9 @@
 </p>
    
 <p align="center">
-   🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B-Longer" target="_blank">ALLaVA-3B-Longer</a> • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-3B" target="_blank">ALLaVA-3B</a>
+   🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-Phi3-mini-128k" target="_blank">ALLaVA-Phi3-mini-128k</a> 
+   • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-StableLM2-1_6B" target="_blank">ALLaVA-StableLM2-1_6B</a>
+   • 🤗 <a href="https://huggingface.co/FreedomIntelligence/ALLaVA-Phi2-2_7B" target="_blank">ALLaVA-Phi2-2_7B</a> 
 </p>
 
 <!-- <p align="center">
@@ -37,6 +39,7 @@
 </p> -->
 
 ## ✨ Updates
+- [06/25/2024]: We release [ALLaVA-Phi3-mini-128k](https://huggingface.co/FreedomIntelligence/ALLaVA-Phi3-mini-128k), [ALLaVA-StableLM2-1_6B](https://huggingface.co/FreedomIntelligence/ALLaVA-StableLM2-1_6B), [ALLaVA-Phi2-2_7B](https://huggingface.co/FreedomIntelligence/ALLaVA-Phi2-2_7B) which all support loading from 🤗 repo.
 - [03/01/2024]: The huggingface repo of **ALLaVA-3B-Longer (recommended)** and ALLaVA-3B are updated, which now supports the `from_pretrained` method to load models.
 - [02/29/2024]: The huggingface repo of ALLaVA-4V dataset and [download scripts](#data-preparation) are updated. 
 - [02/21/2024]: We are thrilled to release 1) **1.4M** data for training LVLMs, 2) two version of our ALLaVA-3B models, 3) inference code and 4) tech report.
@@ -254,14 +257,47 @@ tone accents."
 ```
 </details>
 
+## Benchmark Result
 
+Our models [**ALLaVA-Phi3-mini-128k**](https://huggingface.co/FreedomIntelligence/ALLaVA-Phi3-mini-128k), 
+[**ALLaVA-StableLM2-1_6B**](https://huggingface.co/FreedomIntelligence/ALLaVA-StableLM2-1_6B) 
+and [**ALLaVA-Phi2-2_7B**](https://huggingface.co/FreedomIntelligence/ALLaVA-Phi2-2_7B) 
+achieve competitive results on 17 benchmarks. 
+
+
+|      Models        | Vicuna-80 | GQA | HallusionBench | MME-P | MMVP | TouchStone | TextVQA | MME-C | MathVista | MM-Vet | MMMU-val | SQA (img) | LLaVA (In-the-Wild) | MLLM-Bench | MMB-en | MMB-cn | SEEDBench (img, v1) |
+|---------------------------|-----------|-----|-------|-------|------|----|---------|-------|----|--------|-----------------|---------|---------------|----|--------|--------|--------------------|
+| **Large VLMs**           |           |     |       |       |      |    |         |       |    |        |                 |         |               |    |        |        |                    |
+| BLIP-2                   | -         | -   | -     | -     | -    | -  | -       | -     | -  | 22.4   | 34.4            | -       | -             | 3.0*| -      | -      | 49.7              |
+| InstructBLIP             | -         | 49.5| -     | -     | -    | -  | -       | -     | -  | 25.6   | -               | -       | 58.2          | -   | 44.0   | -      | -                 |
+| Qwen-VL-Chat             | -         | 57.5| -     | 1487.6| -    | -  | 61.5    | 360.7 | -  | 31.1   | -               | 68.2    | -             | -   | 60.6   | 56.7   | 65.4               |
+| LLaVA-1.5-7B             | 13.8*     | 62.0| 36.6* | 1504.4*| 24.7*| 594.9*| 58.2| 324.6*| 25.0*| 31.1| 35.1*| 66.8| 65.4| 23.0*| 64.3| 58.3| 66.1|
+| LLaVA-1.5-13B            | 22.5      | 63.3| 36.5* | 1531.3 | 38.0*| 617.7*| 61.3| 295.4| 28.3*| 35.4| 34.4*| 71.6| 72.5| -| 67.7| 63.6| 68.2|
+| LVIS-7B                  | -         | 62.6| -     | -     | -    | -  | 58.7    | -     | -  | 31.5   | -               | -       | 67.0          | 29.0*| 66.2   | -      | -                 |
+| LVIS-13B                 | -         | 63.6*| -    | -     | -    | -  | 62.5*   | -     | -  | 37.4*  | -               | -       | 71.3*         | -   | 68.0*  | -      | -                 |
+| ShareGPT4V-7B            | 13.8*     | 63.3| 36.0* | 1540.1*| 34.0*| 637.2*| 60.4| 346.1*| 24.7*| 37.6| 35.4*| 68.4*| 72.6| 30.2*| 68.8| 61.0*| 69.7|
+| ShareGPT4V-13B           | 17.5*     | 64.8| 39.0* | 1576.1*| 35.3*| 648.7*| 62.2| 309.3*| 28.8*| 43.1| 35.6*| 70.0*| 79.9| 35.5*| 71.2| 61.7*| 70.8|
+| **4B-scale Lite VLMs**   |           |     |       |       |      |    |         |       |    |        |                 |         |               |    |        |        |                    |
+| MobileVLM-v2             | 5.0*      | 61.1| 30.8* | 1440.5 | 18.7*| 541.0*| 57.5| 261.8*| 28.3*| 26.1*| 30.8*| 70.0| 53.2*| 15.7*| 63.2| 43.2*| 64.5*|
+| Mipha-3B                 | 16.2*     | **63.9**| 34.3*| **1488.9**| 32.0*| 619.0*| 56.6| 285.0*| 27.8*| 33.5*| 35.8*| 70.9| 64.7*| 23.1*| **69.7**| 42.9*| **71.2***|
+| TinyLLaVA                | 15.6*     | 62.1| 37.2* | 1465.5*| 33.3*| 663.5*| **60.3**| 281.1*| 30.3*| 37.5| 38.4| **73.0**| 70.8*| 29.8*| **69.7***| 42.8*| 70.4*|
+| **Ours**                 |           |     |       |       |      |    |         |       |    |        |                 |         |               |    |        |        |                    |
+| **ALLaVA-Phi2**          | 49.4      | 48.8| 24.8  | 1316.2| **36.0**| 632.0| 49.5| 301.8| 27.4| 32.2| 35.3| 67.6| 69.4| 43.6| 64.0| 40.8| 65.2|
+| **ALLaVA-StableLM2**     | 38.8      | 49.8| 25.3  | 1311.7| 34.0 | 655.2| 51.7| 257.9| 27.7| 31.7| 33.3| 64.7| **72.0**| 39.3| 64.6| 49.8| 65.7|
+| **ALLaVA-Phi3**          | **56.9**| 52.2| **48.1**| 1382.3| 32.7| **667.8**| 53.0| **347.1**| **32.9**| **37.8**| **41.1**| 64.0| 68.5| **54.8**| 68.1| **55.3**| 69.0|
+
+
+> \* denotes the results of our evaluation. **Bold numbers** are the best results among all 4B-scale LVLMs.The detailed information of each benchmark is shown in Table 4 of our [technical report](https://arxiv.org/pdf/2402.11684.pdf).
 
 ## 🏭 Inference
+All models can be loaded from HuggingFace using `.from_pretrained()` method.
+Check out [example scripts]() for sample inputs and outputs.
 
-### Load from 🤗 (Recommended) 
-See the [example script](allava/serve/huggingface_inference.py).
 
-### CLI
+<!-- ### Load from 🤗 (Recommended) 
+See the [example script](allava/serve/huggingface_inference.py). -->
+
+<!-- ### CLI
 
 ```shell
 git clone https://github.com/FreedomIntelligence/ALLaVA.git
@@ -269,7 +305,7 @@ cd ALLaVA
 pip install -r requirements.txt
 
 python allava/serve/cli.py --model_dir /path/to/allava/model
-```
+``` -->
 
 <!-- ### Setup
 
@@ -285,7 +321,7 @@ python allava/serve/cli.py --model_dir /path/to/allava/model
 
 
 <!-- ### Batch Inference -->
-You can use the `bot.chat()` API in `allava/serve/cli.py`  to perform generation. Don't forget to call `bot.clear_history()` after generation for each item in a dataset. An example code snippet is shown below:
+<!-- You can use the `bot.chat()` API in `allava/serve/cli.py`  to perform generation. Don't forget to call `bot.clear_history()` after generation for each item in a dataset. An example code snippet is shown below:
 
 ```python
 bot = Chatbot(config)
@@ -300,16 +336,16 @@ for line in data:
     responses.append(response)
 
     bot.clear_history() # start fresh for a new item
-```
+``` -->
 
 
 
 ## 🏋️‍♂️ Training
 
 ### Data
-<div align=center>
+<!-- <div align=center>
 <img src="assets/training_datasets_by_stage.jpg" width = "640" alt="training_datasets" align=center />
-</div>
+</div> -->
 
 As shown in the table, ALLaVA-3B uses 1M and 1.5M data for PT. and FT., respectively. 
 ALLaVA-3B-Longer trains one more epoch (i.e. 3M in total) for the FT. stage.
@@ -327,9 +363,9 @@ These two models share the same PT procedure.
 
 ### Hyperparameters
 
-| Global Batch Size| ZeRO Stage| Optimizer | Max LR| Min LR | Scheduler | Max length | Weight decay |
-| ---: | ---: |--:| ---: | ---: | ---: | ---: | ---: |
-| 256 (PT) / 128 (FT) | 1| AdamW | 2e-5 | 2e-6 | CosineAnnealingWarmRestarts | 2048 | 0 |
+| Global Batch Size| ZeRO Stage| Optimizer | Max LR| Min LR | Scheduler | Weight decay |
+| ---: | ---: |--:| ---: | ---: | ---: | ---: |
+| 256 (PT) / 128 (FT) | 1| AdamW | 2e-5 | 2e-6 | CosineAnnealingWarmRestarts | 0 |
 
 The LM backbone, projector are trainable, while the vision encoder is kept frozen. 
 **The trainabilities of each module are the same for both stages.**
@@ -354,11 +390,13 @@ Others: Jianquan Li, [Xiang Wan](https://scholar.google.com/citations?user=e3_kW
 ## 📝 Citation
 If you find our data useful, please consider citing our work! We are FreedomIntelligence from [Shenzhen Research Institute of Big Data](http://sribd.cn/en) and [The Chinese University of Hong Kong, Shenzhen](https://sds.cuhk.edu.cn/en)
 ```
-@article{chen2024allava,
-  title={ALLaVA: Harnessing GPT4V-synthesized Data for A Lite Vision-Language Model},
-  author={Chen, Guiming Hardy and Chen, Shunian and Zhang, Ruifei and Chen, Junying and Wu, Xiangbo and Zhang, Zhiyi and Chen, Zhihong and Li, Jianquan and Wan, Xiang and Wang, Benyou},
-  journal={arXiv preprint arXiv:2402.11684},
-  year={2024}
+@misc{chen2024allava,
+      title={ALLaVA: Harnessing GPT4V-synthesized Data for A Lite Vision-Language Model}, 
+      author={Guiming Hardy Chen and Shunian Chen and Ruifei Zhang and Junying Chen and Xiangbo Wu and Zhiyi Zhang and Zhihong Chen and Jianquan Li and Xiang Wan and Benyou Wang},
+      year={2024},
+      eprint={2402.11684},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 ```
 
