@@ -291,7 +291,7 @@ achieve competitive results on 17 benchmarks.
 
 ## 🏭 Inference
 All models can be loaded from HuggingFace using `.from_pretrained()` method.
-Check out [example scripts]() for sample inputs and outputs.
+Check out [example scripts](https://github.com/FreedomIntelligence/ALLaVA/tree/main/allava/serve) for sample inputs and outputs.
 
 
 <!-- ### Load from 🤗 (Recommended) 
